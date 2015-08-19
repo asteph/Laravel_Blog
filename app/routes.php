@@ -15,3 +15,33 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/sayhello/{name?}', function($name = null)
+{
+	if (ucfirst($name) == "Chris") {
+        return Redirect::to('/');
+    } else {
+		return 'Hello ' . ucfirst($name);
+	}
+});
+
+Route::get('/resume', function()
+{
+	return 'This is my resume.';
+});
+
+Route::get('/portfolio', function()
+{
+	return 'This is my portfolio.';
+});
+
+Route::get('/rolldice/{guess}', function($guess)
+{
+	$data = array('guess' => $guess);
+	return View::make('roll-dice')->with($data);
+});
+
+
+
+
+
