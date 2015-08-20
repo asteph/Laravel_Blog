@@ -32,7 +32,7 @@ Route::get('/sayhello/{name?}', function($name = null)
 	}
 });
 
-
+Route::resource('posts', "PostsController");
 
 
 

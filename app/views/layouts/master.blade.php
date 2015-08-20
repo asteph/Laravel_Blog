@@ -13,7 +13,7 @@
             <div class="nav-bar right">
                 <ul class="button-group">
                     <li><a href="#" class="button">Link 1</a></li>
-                    <li><a href="{{{ action('HomeController@showResume') }}} class="button">Resume</a></li>
+                    <li><a href="{{{ action('HomeController@showResume') }}}" class="button">Resume</a></li>
                     <li><a href="#" class="button">Link 3</a></li>
                     <li><a href="#" class="button">Link 4</a></li>
                 </ul>
