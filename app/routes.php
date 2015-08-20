@@ -17,6 +17,8 @@ Route::get('/resume', 'HomeController@showResume');
 
 Route::get('/portfolio', 'HomeController@showPortfolio');
 
+Route::resource('posts', 'PostsController');
+
 Route::get('/rolldice/{guess}', function($guess)
 {
 	$data = array('guess' => $guess);
@@ -32,7 +34,6 @@ Route::get('/sayhello/{name?}', function($name = null)
 	}
 });
 
-Route::resource('posts', "PostsController");
 
 
 
