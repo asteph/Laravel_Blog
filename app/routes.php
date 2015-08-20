@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('index');
 });
 
 Route::get('/sayhello/{name?}', function($name = null)
@@ -40,6 +40,7 @@ Route::get('/rolldice/{guess}', function($guess)
 	$data = array('guess' => $guess);
 	return View::make('roll-dice')->with($data);
 });
+
 
 
 
