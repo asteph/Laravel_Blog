@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', 'HomeController@showIndex');
+
+Route::get('/resume', 'HomeController@showResume');
+
+Route::get('/portfolio', 'HomeController@showPortfolio');
+
+Route::get('/rolldice/{guess}', function($guess)
 {
-	return View::make('index');
+	$data = array('guess' => $guess);
+	return View::make('roll-dice')->with($data);
 });
 
 Route::get('/sayhello/{name?}', function($name = null)
@@ -24,23 +31,6 @@ Route::get('/sayhello/{name?}', function($name = null)
 		return 'Hello ' . ucfirst($name);
 	}
 });
-
-Route::get('/resume', function()
-{
-	return 'This is my resume.';
-});
-
-Route::get('/portfolio', function()
-{
-	return 'This is my portfolio.';
-});
-
-Route::get('/rolldice/{guess}', function($guess)
-{
-	$data = array('guess' => $guess);
-	return View::make('roll-dice')->with($data);
-});
-
 
 
 
