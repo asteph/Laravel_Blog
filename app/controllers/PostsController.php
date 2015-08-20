@@ -9,7 +9,7 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return 'We are on index';
 	}
 
 
@@ -20,7 +20,7 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return 'Show form for creating post';
 	}
 
 
@@ -43,7 +43,7 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return "The posted value is $id";
 	}
 
 
@@ -55,7 +55,7 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return "Imagine a form where you can change: $id";
 	}
 
 
