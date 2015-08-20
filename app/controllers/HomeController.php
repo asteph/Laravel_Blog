@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 
 	public function showIndex()
 	{
-		return View::make('index');
+		$posts = Post::all();
+		return View::make('posts.index')->with(['posts'=>$posts]);
 	}
 
 	public function showResume()

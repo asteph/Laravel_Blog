@@ -9,7 +9,9 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return 'We are on index';
+		$posts = Post::all();
+		return View::make('posts.index')->with(['posts'=>$posts]);
+
 	}
 
 
@@ -31,7 +33,16 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		return Redirect::back()->withInput();
+		if(!Input::has('title') && !Input::has('body')){
+			return Redirect::back()->withInput();
+		}else{
+			$post = new Post();
+			$post->title = Input::get('title');
+			$post->body = Input::get('body');
+			$post->save();
+			return Redirect::action('PostsController@index');
+		}
+
 	}
 
 
@@ -43,7 +54,8 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return "The posted value is $id";
+		$post  = Post::find($id);
+		return View::make('posts.show')->with('post', $post);
 	}
 
 
@@ -55,7 +67,8 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return "Imagine a form where you can change: $id";
+		$post = Post::find($id);
+		return View::make('posts.edit')->with('post', $post);
 	}
 
 
@@ -67,7 +80,11 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$post = Post::find($id);
+		$post->title = Input::get('title');
+		$post->body = Input::get('body');
+		$post->save();
+		return Redirect::action('PostsController@show', array($id));
 	}
 
 
@@ -79,7 +96,10 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$post = Post::find($id);
+		$post->delete();
+
+		return Redirect::action('PostsController@index');
 	}
 
 

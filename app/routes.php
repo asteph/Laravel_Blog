@@ -34,6 +34,15 @@ Route::get('/sayhello/{name?}', function($name = null)
 	}
 });
 
+Route::get('orm-test', function ()
+{
+    $posts = Post::all();
+    $titles = array();
+    foreach($posts as $post){
+    	$titles[] = $post->title;
+    }
+	return $titles;
+});
 
 
 

@@ -14,7 +14,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label>Body
-					<textarea name="body" placeholder="Blog Post Content">{{{ Input::old('body') }}}</textarea>
+					<textarea name="body" rows="20" placeholder="Blog Post Content">{{{ Input::old('body') }}}</textarea>
 				</label>
 			</div>
 		</div>
