@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 	@endif	
-	{{ Form::open(array('action' => 'PostsController@update', $post->id)) }}
+	{{ Form::open(array('action' => array('PostsController@update', $post->id), 'method' => 'PUT')) }}
 	{{-- <form method="POST" action="{{{action('PostsController@store')}}}"> --}}
 	  <div class="form-group @if($errors->has('title')) has-error @endif">
 	    <label class="control-label" for="title">Title</label>
@@ -24,7 +24,7 @@
 	    <label class="control-label" for="body">Blog Content</label>
 	    <textarea class="form-control" id="body" name="body" rows="20" >{{{ $post->body }}}</textarea>
 	  </div>
-	  {{-- TODO: Doesn't work yet, use from adlister UPDATE: PostsController--}}
+	  {{-- TODO: Doesn't work yet, use from adlister to upload photo as well as catch img url UPDATE: PostsController--}}
 	  {{-- <div class="form-group">
 	    <label for="img_url">Image</label>
 	    <input type="file" value="img_url" id="img_url">
