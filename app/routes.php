@@ -34,14 +34,21 @@ Route::get('/sayhello/{name?}', function($name = null)
 	}
 });
 
-Route::get('orm-test', function ()
+Route::get('/orm-test', function ()
 {
-    $posts = Post::all();
-    $titles = array();
-    foreach($posts as $post){
-    	$titles[] = $post->title;
-    }
-	return $titles;
+	$i = mt_rand(1, 10);
+    $post1 = new Post();
+    $post1->title = strtoupper('Eloquent is awesome!');
+    $post1->body  = 'It is super easy to create a new post.';
+    $post1->img_url = "http://lorempixel.com/720/280/abstract/$i";
+    $post1->save();
+
+    $i++;
+    $post2 = new Post();
+    $post2->title = strtoupper('Post number two');
+    $post2->body  = 'The body for post number two.';
+    $post2->img_url = "http://lorempixel.com/720/280/abstract/$i";
+    $post2->save();
 });
 
 

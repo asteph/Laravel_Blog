@@ -1,3 +1,40 @@
+.navyBack{
+	background-color: #2F3C4E;
+}
+.navy{
+	color: #2F3C4E;
+}
+.grayBack{
+	background-color: #F1F1F1;
+}
+.gray{
+	color: #F1F1F1;
+}
+.whiteBack{
+	background-color: #FFF;
+}
+.white{
+	color: #FFF;
+}
+.redBack{
+	background-color: #E74C3C;
+}
+.red{
+	color: #E74C3C;
+}
+.top-bar{
+	height: 5rem;
+	padding: 1rem 1.5rem 1rem 1.5rem;
+}
+
 img{
+	margin-top: 1rem;
 	margin-bottom: 1rem;
+	overflow: visible;
+}
+#post-preview{
+	padding: none;
+}
+h3{
+	font-family: 'Roboto Slab', serif;
 }

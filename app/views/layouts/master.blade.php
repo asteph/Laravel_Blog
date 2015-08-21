@@ -1,3 +1,17 @@
+<?php 
+// make links active when on page
+function echoActiveClassIfRequestMatches($requestUri)
+{
+    $current_file_name = basename($_SERVER['PHP_SELF'], ".php");
+
+    if ($current_file_name == $requestUri){
+        echo 'class="active"';
+    }else
+        echo '';
+
+}
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -6,23 +20,29 @@
     <title>Blog</title>
     <link rel="stylesheet" href="/css/foundation.css" />
     <link rel="stylesheet" href="/css/custom_blog.css" />
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
     <script src="/js/vendor/modernizr.js"></script>
 </head>
-<body>
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="nav-bar right">
-                <ul class="button-group">
-                    <li><a href="{{{ action('HomeController@showIndex') }}}" class="button">Home</a></li>
-                    <li><a href="{{{ action('HomeController@showResume') }}}" class="button">Resume</a></li>
-                    <li><a href="{{{ action('HomeController@showPortfolio') }}}" class="button">Portfolio</a></li>
-                    <li><a href="#" class="button">Link 4</a></li>
-                </ul>
-            </div>
-            <h1>Blog <small>This is my blog. It's awesome.</small></h1>
-            <hr/>
-        </div>
-    </div>
+<body class="grayBack">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="{{{ action('HomeController@showIndex') }}}"><logo>Alissa Stephens </logo></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li><a href="{{{ action('HomeController@showIndex') }}}">Home</a></li>
+          <li><a href="{{{ action('HomeController@showResume') }}}" >Resume</a></li>
+          <li><a href="{{{ action('HomeController@showPortfolio') }}}">Portfolio</a></li>
+        </ul>
+
+    </nav>
 
     <div class="row">
 
@@ -41,7 +61,7 @@
                 <li><a href="#">Weasels</a></li>
             </ul>
 
-            <div class="panel">
+            <div class="panel whiteBack">
                 <h5>Featured</h5>
                 <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
                 <a href="#">Read More →</a>
