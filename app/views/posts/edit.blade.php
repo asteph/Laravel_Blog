@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 	@endif	
-	{{ Form::open(array('action' => 'PostsController@update')) }}
+	{{ Form::open(array('action' => 'PostsController@update', $post->id)) }}
 	{{-- <form method="POST" action="{{{action('PostsController@store')}}}"> --}}
 	  <div class="form-group @if($errors->has('title')) has-error @endif">
 	    <label class="control-label" for="title">Title</label>
