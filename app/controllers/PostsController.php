@@ -9,9 +9,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::all();
-		return View::make('posts.index')->with(['posts'=>$posts]);
-
+		$posts = Post::paginate(4);
+		return View::make('posts.index')->with(array('posts' => $posts));
 	}
 
 
@@ -33,16 +32,23 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		if(!Input::has('title') && !Input::has('body')){
-			return Redirect::back()->withInput();
-		}else{
-			$post = new Post();
+		// create the validator
+	    $validator = Validator::make(Input::all(), Post::$rules);
+
+	    // attempt validation
+	    if ($validator->fails()) {
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+	        // validation succeeded, create and save the post
+	        $post = new Post();
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
+			// change to use uploaded image path and save image in img folder
+			$post->img_url = 'http://lorempixel.com/900/300/animals';
 			$post->save();
 			return Redirect::action('PostsController@index');
-		}
-
+	    }
 	}
 
 
@@ -80,11 +86,21 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$post = Post::find($id);
-		$post->title = Input::get('title');
-		$post->body = Input::get('body');
-		$post->save();
-		return Redirect::action('PostsController@show', array($id));
+		// create the validator
+	    $validator = Validator::make(Input::all(), Post::$rules);
+
+	    // attempt validation
+	    if ($validator->fails()) {
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+			$post = Post::find($id);
+			$post->title = Input::get('title');
+			$post->body = Input::get('body');
+			$post->img_url = 'http://lorempixel.com/900/300/animals';
+			$post->save();
+			return Redirect::action('PostsController@show', array($id));
+		}
 	}
 
 

@@ -9,7 +9,7 @@
             <div class="row">
               
                 <div class="large-12 columns">
-                    <img src="http://placehold.it/690x240&text=[img]"/>
+                    <img src="http://placehold.it/900x300&text=[img]"/>
                 </div>
             </div>
 

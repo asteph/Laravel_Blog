@@ -22,7 +22,7 @@ class HomeController extends BaseController {
 
 	public function showIndex()
 	{
-		$posts = Post::all();
+		$posts = Post::paginate(4);
 		return View::make('posts.index')->with(['posts'=>$posts]);
 	}
 

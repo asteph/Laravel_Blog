@@ -1,30 +1,33 @@
 @extends('layouts.master')
 
 @section('content')
-        
-        @foreach($posts as $post)
-            <article>
 
-                <h3><a href="#">{{{$post->title}}}</a></h3>
-                <h6>Written by <a href="#">Alissa Stephens</a> on {{{$post->created_at}}}.</h6>
+    @foreach($posts as $post)
 
-                <div class="row">
-                  
-                    <div class="large-12 columns">
-                        {{-- http://placehold.it/690x240&text=[img] --}}
-                        {{-- "http://lorempixel.com/690/240/cats/" --}}
-                        <img src="{{{$post->img_url}}}"/>
-                    </div>
-                </div>
+        <h2>
+            <a href="{{{ action('PostsController@show', $post->id) }}}">{{{$post->title}}}</a>
+        </h2>
 
-                <p>{{{$post->body}}}</p>
+        <p><span class="glyphicon glyphicon-time"></span> Posted {{{$post->created_at}}}</p>
+        <hr>
+        <img class="img-responsive" src="{{{$post->img_url}}}" alt="">
+        <hr>
+        <p>{{{substr($post->body, 0, 300) . "..."}}}</p>
+        <a class="btn btn-primary" href="{{{ action('PostsController@show', $post->id) }}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <hr>
 
-            </article>
+    @endforeach
 
-            <hr/>
-            <br>
-        @endforeach
-    
+    {{ $posts->links() }}
 
+{{--         <!-- Pager -->
+        <ul class="pager">
+            <li class="previous">
+                <a href="#">&larr; Older</a>
+            </li>
+            <li class="next">
+                <a href="#">Newer &rarr;</a>
+            </li>
+        </ul> --}}
     
 @stop
