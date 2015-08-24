@@ -29,12 +29,12 @@
             <h4 class="modal-title">Delete Post</h4>
           </div>
           <div class="modal-body">
-            <p>Are you sure you want to delete this post?</p>
+            <p>Are you sure you want to delete the post titled {{{$post->title}}}?</p>
           </div>
           <div class="modal-footer">
             {{ Form::open(array('action' => array('PostsController@destroy', $post->id, 'style'=>'display:inline;'), 'method' => 'DELETE')) }}
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-danger" type="submit" >Delete</button>
+                <button class="btn btn-danger" >Delete</button>
             {{ Form::close() }}
           </div>
         </div>
