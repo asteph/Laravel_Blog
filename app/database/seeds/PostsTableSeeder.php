@@ -2,7 +2,7 @@
 
 use Faker\Factory as Faker;
 
-class PostsSeeder extends Seeder{
+class PostsTableSeeder extends Seeder{
 
     public function run(){
         $faker = Faker::create();
