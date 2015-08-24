@@ -39,6 +39,7 @@ class PostsController extends \BaseController {
 	    if ($validator->fails()) {
 	        // validation failed, redirect to the post create page with validation errors and old inputs
 	        Session::flash('errorMessage', 'Your new post was not successfully created. See errors below:');
+	        Log::info('Unsuccessful attempt to create blog post: ',Input::all());
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 	        // validation succeeded, create and save the post
