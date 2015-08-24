@@ -3,7 +3,9 @@
 @section('content')
 
 	{{-- show errors in alert box --}}
-
+	@if (Session::has('errorMessage'))
+	    <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+	@endif
 	@if($errors->has())
 
 		<div class="alert alert-danger" role="alert">

@@ -2,6 +2,9 @@
 
 @section('content')
 
+    @if (Session::has('successMessage'))
+        <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+    @endif
     @foreach($posts as $post)
 
         <h2>
@@ -31,3 +34,4 @@
         </ul> --}}
     
 @stop
+

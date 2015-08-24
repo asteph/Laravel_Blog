@@ -38,6 +38,7 @@ class PostsController extends \BaseController {
 	    // attempt validation
 	    if ($validator->fails()) {
 	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        Session::flash('errorMessage', 'Your new post was not successfully created. See errors below:');
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 	        // validation succeeded, create and save the post
@@ -47,6 +48,7 @@ class PostsController extends \BaseController {
 			// change to use uploaded image path and save image in img folder
 			$post->img_url = 'http://lorempixel.com/900/300/';
 			$post->save();
+			Session::flash('successMessage', 'Your new post titled "' . $post->title . '" was successfully created.');
 			return Redirect::action('PostsController@index');
 	    }
 	}
@@ -92,6 +94,7 @@ class PostsController extends \BaseController {
 	    // attempt validation
 	    if ($validator->fails()) {
 	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        Session::flash('errorMessage', 'The update was unsuccessful. See errors below:');
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 			$post = Post::find($id);
@@ -100,6 +103,7 @@ class PostsController extends \BaseController {
 			//need to add in file upload and chance this
 			$post->img_url = 'http://lorempixel.com/900/300/animals';
 			$post->save();
+			Session::flash('successMessage', 'Your post titled "' . $post->title . '" was successfully updated.');
 			return Redirect::action('PostsController@show', array($id));
 		}
 	}
@@ -115,7 +119,7 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 		$post->delete();
-
+		Session::flash('successMessage', 'Your post titled "' . $post->title . '" was successfully deleted.');
 		return Redirect::action('PostsController@index');
 	}
 

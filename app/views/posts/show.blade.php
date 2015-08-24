@@ -4,6 +4,9 @@
 @section('content')
 
     <!-- Blog Post -->
+    @if (Session::has('successMessage'))
+        <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+    @endif
 
     <!-- Title -->
     <h1>{{{$post->title}}}</h1>
