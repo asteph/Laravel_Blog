@@ -55,6 +55,9 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="posts/create">Create Post</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
