@@ -11,12 +11,36 @@
     <hr>
 
     <!-- Date/Time -->
-    <p><span class="glyphicon glyphicon-time"></span> Posted {{{$post->created_at}}}</p>
+    <p><span class="glyphicon glyphicon-time"></span>  {{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A')}}}</p>
 
     <hr>
 
     <!-- Preview Image -->
     <img class="img-responsive" src="{{{$post->img_url}}}" alt="">
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Delete Post</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this post?</p>
+          </div>
+          <div class="modal-footer">
+            {{ Form::open(array('action' => array('PostsController@destroy', $post->id, 'style'=>'display:inline;'), 'method' => 'DELETE')) }}
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-danger" type="submit" >Delete</button>
+            {{ Form::close() }}
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <hr>
 
@@ -26,7 +50,9 @@
     <br>
     {{-- TODO:Add check to make sure only author sees 'edit' and 'delete' buttons --}}
     <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
-    <a class="btn btn-danger" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-trash"></span></a>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>
+
 
     <hr>
 

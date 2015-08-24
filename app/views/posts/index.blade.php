@@ -8,7 +8,7 @@
             <a href="{{{ action('PostsController@show', $post->id) }}}">{{{$post->title}}}</a>
         </h2>
 
-        <p><span class="glyphicon glyphicon-time"></span> Posted {{{$post->created_at}}}</p>
+        <p><span class="glyphicon glyphicon-time"></span>  {{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A')}}}</p>
         <hr>
         <img class="img-responsive" src="{{{$post->img_url}}}" alt="">
         <hr>

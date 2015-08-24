@@ -45,7 +45,7 @@ class PostsController extends \BaseController {
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
 			// change to use uploaded image path and save image in img folder
-			$post->img_url = 'http://lorempixel.com/900/300/animals';
+			$post->img_url = 'http://lorempixel.com/900/300/';
 			$post->save();
 			return Redirect::action('PostsController@index');
 	    }
@@ -60,7 +60,7 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$post  = Post::find($id);
+		$post = Post::find($id);
 		return View::make('posts.show')->with('post', $post);
 	}
 
@@ -97,6 +97,7 @@ class PostsController extends \BaseController {
 			$post = Post::find($id);
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
+			//need to add in file upload and chance this
 			$post->img_url = 'http://lorempixel.com/900/300/animals';
 			$post->save();
 			return Redirect::action('PostsController@show', array($id));

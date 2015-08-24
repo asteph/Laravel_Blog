@@ -13,7 +13,7 @@ class PostsSeeder extends Seeder{
             $post1 = new Post();
             $post1->title = strtoupper($faker->bs);
             $post1->body  = $faker->text($maxNbChars = 2000);
-            $post1->img_url = $faker->imageUrl($width=900, $height=300, 'animals');
+            $post1->img_url = $faker->imageUrl($width=900, $height=300);
             $post1->save();
         }
     }
