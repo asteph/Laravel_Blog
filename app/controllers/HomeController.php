@@ -38,7 +38,7 @@ class HomeController extends BaseController {
 
 	public function showLogin()
 	{
-		return 'login form goes here.';
+		return View::make('login');
 	}
 
 	public function doLogin()
@@ -51,6 +51,7 @@ class HomeController extends BaseController {
 		} else {
 		    // login failed, go back to the login screen
 		    // 1. Display a session flash error
+			Session::flash('errorMessage', 'Incorrect email or password. Please try again.');
 		    // 2. Log email that tried to authenticate
 		    return Redirect::action('HomeController@showLogin');
 		}

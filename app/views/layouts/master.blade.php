@@ -55,8 +55,14 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="posts/create">Create Post</a>
+                    </li>
+                    <li>
+                        <!-- Trigger the login modal with a button -->
+                        <a data-toggle="modal" data-target="#myModal">Login</a>
                     </li>
                 </ul>
             </div>
@@ -64,6 +70,37 @@
         </div>
         <!-- /.container -->
     </nav>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">User Login</h4>
+                </div>
+                {{ Form::open(array('action' => 'HomeController@doLogin')) }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label" for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" value="{{{ Input::old('email') }}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password">Password</label>
+                            <input type="text" class="form-control" id="password" name="password" value="{{{ Input::old('password') }}}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" >Login</button>
+                    </div>
+                {{-- </form> --}}
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>
 
     <!-- Page Content -->
     <div class="container">

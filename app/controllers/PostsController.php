@@ -2,6 +2,13 @@
 
 class PostsController extends \BaseController {
 
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->beforeFilter('auth', array('except' => array('index', 'show')));
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -50,6 +57,7 @@ class PostsController extends \BaseController {
 			$post->body = Input::get('body');
 			// change to use uploaded image path and save image in img folder
 			$post->img_url = 'http://lorempixel.com/900/300/';
+			$post->user_id = Auth::id();
 			$post->save();
 			Session::flash('successMessage', 'Your new post titled "' . $post->title . '" was successfully created.');
 			return Redirect::action('PostsController@index');
