@@ -55,15 +55,31 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        {{ Form::open(array('action' => array('PostsController@index'), 'class' => 'navbar-form navbar-left', 'role' => 'search', 'method' => 'GET')) }}
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" name="search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        {{ Form::close() }}
+                    </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="posts/create">Create Post</a>
-                    </li>
-                    <li>
-                        <!-- Trigger the login modal with a button -->
-                        <a data-toggle="modal" data-target="#myModal">Login</a>
-                    </li>
+                    @if (Auth::check()) 
+                        <li>
+                            <a href="posts/create">Create Post</a>
+                        </li>
+                        <li>
+                            <a href="{{{ action('HomeController@doLogout') }}}">Logout</a>
+                        </li>
+                    @else 
+                        <li>
+                            <!-- Trigger the login modal with a button -->
+                            <a data-toggle="modal" data-target="#myModal" href="#">Login</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

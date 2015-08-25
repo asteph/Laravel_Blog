@@ -16,9 +16,33 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		// get all the posts with associated user information
-		$posts = Post::with('user')->paginate(4);
-		return View::make('posts.index')->with(array('posts' => $posts));
+		// find more specific posts with queries and order them
+			// $query = Post::with('user');
+			// $query->where('title', '=', 'ENGINEER LEADING-EDGE MINDSHARE');
+				//additional queries made just like above are treated as AND
+				//if want to use an OR change clause to orWhere();
+			// $posts = $query->orderBy('created_at')->paginate(5);
+		// jump to another linked table
+			// $query->whereHas('user', function($q){
+			//	 $q->where('first_name', 'Alissa')
+			// });
+			// $query->orWhereHas('user', function($q){
+			//	 $q->where('last_name', 'Stephens')
+			// });
+		// must end with paginate(), get(), or post()
+		if(Input::has('search')){
+			$query = Post::with('user');
+
+			$query->whereHas('user', function($q){
+				$search = Input::get('search');
+				$q->where('title', 'like', "%$search%");
+			});
+			$posts = $query->paginate(4);
+			return View::make('posts.index')->with(array('posts' => $posts));
+		}else{
+			$posts = Post::with('user')->paginate(4);
+			return View::make('posts.index')->with(array('posts' => $posts));
+		}
 	}
 
 

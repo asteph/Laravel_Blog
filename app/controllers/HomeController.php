@@ -60,7 +60,7 @@ class HomeController extends BaseController {
 	public function doLogout()
 	{
 		Auth::logout();
-		// Session flash "you are no longer logged in"
+		Session::flash('errorMessage', 'Incorrect email or password. Please try again.');
 		return Redirect::to('/');
 	}
 

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@showIndex');
+Route::get('/', 'PostsController@index');
 
 Route::get('resume', 'HomeController@showResume');
 
