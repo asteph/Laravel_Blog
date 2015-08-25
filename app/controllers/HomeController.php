@@ -36,4 +36,32 @@ class HomeController extends BaseController {
 		return View::make('portfolio');
 	}
 
+	public function showLogin()
+	{
+		return 'login form goes here.';
+	}
+
+	public function doLogin()
+	{
+		$email = Input::get('email');
+		$password = Input::get('password');
+
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+		    return Redirect::intended('/');
+		} else {
+		    // login failed, go back to the login screen
+		    // 1. Display a session flash error
+		    // 2. Log email that tried to authenticate
+		    return Redirect::action('HomeController@showLogin');
+		}
+	}
+
+	public function doLogout()
+	{
+		Auth::logout();
+		// Session flash "you are no longer logged in"
+		return Redirect::to('/');
+	}
+
+
 }

@@ -13,15 +13,15 @@
 
 Route::get('/', 'HomeController@showIndex');
 
-Route::get('/resume', 'HomeController@showResume');
+Route::get('resume', 'HomeController@showResume');
 
-Route::get('/portfolio', 'HomeController@showPortfolio');
+Route::get('portfolio', 'HomeController@showPortfolio');
 
 Route::resource('posts', 'PostsController');
 
-Route::get('/rolldice/{guess}', function($guess)
-{
-	$data = array('guess' => $guess);
-	return View::make('roll-dice')->with($data);
-});
+Route::get('login', 'HomeController@showLogin');
+
+Route::post('login', 'HomeController@doLogin');
+
+Route::get('logout', 'HomeController@doLogout');
 
