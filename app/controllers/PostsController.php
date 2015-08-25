@@ -9,7 +9,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::paginate(4);
+		// get all the posts with associated user information
+		$posts = Post::with('user')->paginate(4);
 		return View::make('posts.index')->with(array('posts' => $posts));
 	}
 

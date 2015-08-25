@@ -11,13 +11,15 @@
             <a href="{{{ action('PostsController@show', $post->id) }}}">{{{$post->title}}}</a>
         </h2>
 
-        <p><span class="glyphicon glyphicon-time"></span>  {{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A')}}}</p>
+        <p><span class="glyphicon glyphicon-time"></span>  {{{$post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A')}}}  by {{ $post->user->first_name }} {{ $post->user->last_name }}</p>
         <hr>
         <img class="img-responsive" src="{{{$post->img_url}}}" alt="">
         <hr>
-        <p>{{{substr($post->body, 0, 300) . "..."}}}</p>
+        {{-- {{{substr($post->body, 0, 300) . "..."}}} --}}
+        <p>{{{Str::words($post->body, 40)}}}</p>
         <a class="btn btn-primary" href="{{{ action('PostsController@show', $post->id) }}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
         <hr>
+
 
     @endforeach
 

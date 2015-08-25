@@ -48,7 +48,7 @@
     <hr>
 
     <!-- Post Content -->
-    <p class="lead">{{{substr($post->body, 0, 300)}}}</p>
+    <p class="lead">{{{Str::words($post->body, 40)}}}</p>
     <p>{{{substr($post->body, 300)}}}</p>
     <br>
     {{-- TODO:Add check to make sure only author sees 'edit' and 'delete' buttons --}}

@@ -15,6 +15,11 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+	// Relationship
+	public function posts()
+	{
+	    return $this->hasMany('Post');
+	}
 
 	/**
 	 * The attributes excluded from the model's JSON form.
