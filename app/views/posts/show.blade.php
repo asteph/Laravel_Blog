@@ -49,7 +49,8 @@
 
     <!-- Post Content -->
     <p class="lead">{{{Str::words($post->body, 40)}}}</p>
-    <p>{{{substr($post->body, 300)}}}</p>
+    {{-- start normal text after preview shown in index --}}
+    <p>{{{substr($post->body, strlen(Str::words($post->body, 40)) )}}}</p>
     <br>
     {{-- TODO:Add check to make sure only author sees 'edit' and 'delete' buttons --}}
     <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
