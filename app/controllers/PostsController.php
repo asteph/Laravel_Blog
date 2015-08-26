@@ -115,7 +115,12 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		$post = Post::find($id);
-		return View::make('posts.edit')->with('post', $post);
+		if(Auth::check() && Auth::user()->id == $post->user_id){
+			return View::make('posts.edit')->with('post', $post);
+		}else{
+			Session::flash('errorMessage', 'Hey buddy, you can not edit or delete a post that is not yours.');
+			return View::make('posts.show')->with('post', $post);
+		} 
 	}
 
 

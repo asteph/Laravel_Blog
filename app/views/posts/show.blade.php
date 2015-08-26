@@ -7,6 +7,9 @@
     @if (Session::has('successMessage'))
         <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
     @endif
+    @if (Session::has('errorMessage'))
+        <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+    @endif
 
     <!-- Title -->
     <h1>{{{$post->title}}}</h1>
@@ -52,10 +55,12 @@
     {{-- start normal text after preview shown in index --}}
     <p>{{{substr($post->body, strlen(Str::words($post->body, 40)) )}}}</p>
     <br>
-    {{-- TODO:Add check to make sure only author sees 'edit' and 'delete' buttons --}}
-    <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>
+    {{-- Check to make sure only author of post sees 'edit' and 'delete' buttons --}}
+    @if (Auth::check() && Auth::user()->id == $post->user_id) 
+        <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>
+    @endif
 
 
     <hr>
