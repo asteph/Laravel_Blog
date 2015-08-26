@@ -25,3 +25,7 @@ Route::post('login', 'HomeController@doLogin');
 
 Route::get('logout', 'HomeController@doLogout');
 
+Route::get('userCreate', 'HomeController@showUserCreate');
+
+Route::post('userCreate', 'HomeController@userCreate');
+

@@ -38,4 +38,12 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	    $this->attributes['username'] = strtolower($value);
 	}
 
+	public static $rules = array(
+	    'first_name'       => 'required|max:32',
+	    'last_name'        => 'required|max:32',
+	    'email'            => 'required|email|unique:users',
+	    'password'         => 'required|min:6',
+	    'confirm_password' => 'required|min:6',
+	);
+
 }

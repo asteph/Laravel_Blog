@@ -23,6 +23,8 @@
     @endforelse
     @if(Input::has('user'))
         {{$posts->appends(array('user' => "$post->user_id"))->links()}}
+    @elseif(Input::has('search'))
+        {{$posts->appends(array('search' => Input::get('search')))->links()}}
     @else
         {{ $posts->links() }}
     @endif

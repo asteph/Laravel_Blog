@@ -57,6 +57,44 @@ class HomeController extends BaseController {
 		}
 	}
 
+	public function showUserCreate()
+	{
+		return View::make('userCreate');
+	}
+
+	public function userCreate()
+	{
+		// create the validator
+	    $validator = Validator::make(Input::all(), User::$rules);
+
+	    // attempt validation
+	    if ($validator->fails()) {
+	        // validation failed, redirect to the user create page with validation errors and old inputs
+	        Session::flash('errorMessage', 'New User was not succesfully created, see errors below:');
+	        //log error to app/storage/logs/laravel.log
+	        Log::info('Unsuccessful attempt create new user: ',Input::all());
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+	    	if(Input::get('password') == Input::get('confirm_password')){
+		        // validation succeeded and passwords same, create new user
+		        $user = new User();
+				$user->first_name = Input::get('first_name');
+				$user->last_name = Input::get('last_name');
+				$user->email = Input::get('email');
+				$user->password = Input::get('password');
+				$user->save();
+				Session::flash('successMessage', 'Welcome ' . $user->first_name . '!');
+				Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')));
+				return Redirect::action('PostsController@index');
+			}else{
+				Session::flash('errorMessage', 'Passwords did not match.');
+				return Redirect::back()->withInput();
+			}
+	    }
+
+	}
+
+
 	public function doLogout()
 	{
 		Auth::logout();

@@ -55,16 +55,6 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                    <li>
-                        {{ Form::open(array('action' => array('PostsController@index'), 'class' => 'navbar-form navbar-left', 'role' => 'search', 'method' => 'GET')) }}
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" name="search">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        {{ Form::close() }}
-                    </li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check()) 
@@ -78,6 +68,10 @@
                         <li>
                             <!-- Trigger the login modal with a button -->
                             <a data-toggle="modal" data-target="#myModal" href="#">Login</a>
+                        </li>
+                        <li>
+                            <!-- Redirect to create user page -->
+                            <a  href="{{{ action('HomeController@showUserCreate') }}}">New User</a>
                         </li>
                     @endif
                 </ul>
@@ -136,21 +130,23 @@
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
+                    {{ Form::open(array('action' => array('PostsController@index'), 'role' => 'search', 'method' => 'GET')) }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
+                        </div>
+                    {{ Form::close() }}
                     <!-- /.input-group -->
                 </div>
 
 
                 <!-- Side Widget Well -->
                 <div class="well text-center">
-                    <img id="profile" src="/img/profile_small_circle.png" class="img-responsive center-block" alt="profile picture">
+                    <img id="profile" src="/img/profile.jpg" class="img-responsive center-block img-circle" alt="profile picture">
                     <h5>ALISSA STEPHENS</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>

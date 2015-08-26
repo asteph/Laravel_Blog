@@ -13,5 +13,6 @@ footer {
 }
 
 #profile{
-	padding: 15px;
+	margin: 15px auto 10px auto;
+	border: 5px solid #E3E3E3;
 }
