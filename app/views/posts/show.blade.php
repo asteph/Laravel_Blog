@@ -25,7 +25,7 @@
     <img class="img-responsive" src="{{{$post->img_url}}}" alt="">
 
     <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="editModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -59,7 +59,7 @@
     @if (Auth::check() && Auth::user()->id == $post->user_id) 
         <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-trash"></span></button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-trash"></span></button>
     @endif
 
 
