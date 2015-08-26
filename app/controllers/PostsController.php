@@ -39,6 +39,15 @@ class PostsController extends \BaseController {
 			});
 			$posts = $query->paginate(4);
 			return View::make('posts.index')->with(array('posts' => $posts));
+		}elseif(Input::has('user')){
+			$query = Post::with('user');
+
+			$query->whereHas('user', function($q){
+				$user = Input::get('user');
+				$q->where('user_id', '=', "$user");
+			});
+			$posts = $query->paginate(4);
+			return View::make('posts.index')->with(array('posts' => $posts));
 		}else{
 			$posts = Post::with('user')->paginate(4);
 			return View::make('posts.index')->with(array('posts' => $posts));
@@ -77,7 +86,7 @@ class PostsController extends \BaseController {
 	    } else {
 	        // validation succeeded, create and save the post
 	        $post = new Post();
-			$post->title = Input::get('title');
+			$post->title = strtoupper(Input::get('title'));
 			$post->body = Input::get('body');
 			// change to use uploaded image path and save image in img folder
 			$post->img_url = 'http://lorempixel.com/900/300/';
@@ -142,7 +151,7 @@ class PostsController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 			$post = Post::find($id);
-			$post->title = Input::get('title');
+			$post->title = strtoupper(Input::get('title'));
 			$post->body = Input::get('body');
 			//need to add in file upload and chance this
 			$post->img_url = 'http://lorempixel.com/900/300/animals';

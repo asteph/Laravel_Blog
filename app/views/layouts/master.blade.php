@@ -149,8 +149,9 @@
 
 
                 <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
+                <div class="well text-center">
+                    <img id="profile" src="/img/profile_small_circle.png" class="img-responsive center-block" alt="profile picture">
+                    <h5>ALISSA STEPHENS</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
 
