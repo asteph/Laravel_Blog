@@ -37,7 +37,7 @@ class PostsController extends \BaseController {
 				$search = Input::get('search');
 				$q->where('title', 'like', "%$search%");
 			});
-			$posts = $query->paginate(4);
+			$posts = $query->orderBy('created_at', 'desc')->paginate(4);
 			return View::make('posts.index')->with(array('posts' => $posts));
 		}elseif(Input::has('user')){
 			$query = Post::with('user');
@@ -46,10 +46,10 @@ class PostsController extends \BaseController {
 				$user = Input::get('user');
 				$q->where('user_id', '=', "$user");
 			});
-			$posts = $query->paginate(4);
+			$posts = $query->orderBy('created_at', 'desc')->paginate(4);
 			return View::make('posts.index')->with(array('posts' => $posts));
 		}else{
-			$posts = Post::with('user')->paginate(4);
+			$posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(4);
 			return View::make('posts.index')->with(array('posts' => $posts));
 		}
 	}
@@ -85,11 +85,14 @@ class PostsController extends \BaseController {
 	        return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 	        // validation succeeded, create and save the post
+	        if (Input::hasFile('img_url'))
+	        {
+	            Input::file('img_url')->move(public_path().'/img',Input::file('img_url')->getClientOriginalName());
+	            $post->img_url = '/img/' . Input::file('img_url')->getClientOriginalName();
+	        }
 	        $post = new Post();
 			$post->title = strtoupper(Input::get('title'));
 			$post->body = Input::get('body');
-			// change to use uploaded image path and save image in img folder
-			$post->img_url = 'http://lorempixel.com/900/300/';
 			$post->user_id = Auth::id();
 			$post->save();
 			Session::flash('successMessage', 'Your new post titled "' . $post->title . '" was successfully created.');

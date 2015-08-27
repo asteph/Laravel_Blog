@@ -99,7 +99,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="password">Password</label>
-                            <input type="text" class="form-control" id="password" name="password" value="{{{ Input::old('password') }}}">
+                            <input type="password" class="form-control" id="password" name="password" value="{{{ Input::old('password') }}}">
                         </div>
                     </div>
                     <div class="modal-footer">

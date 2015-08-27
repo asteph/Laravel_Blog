@@ -13,9 +13,11 @@ class DatabaseSeeder extends Seeder {
 		//order of delete important due to oreign key
 		DB::table('posts')->delete();
 		DB::table('users')->delete();
+		DB::table('comments')->delete();
 
 		$this->call('UsersTableSeeder');
 		$this->call('PostsTableSeeder');
+		$this->call('CommentsTableSeeder');
 	}
 
 }
