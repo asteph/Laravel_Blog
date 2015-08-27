@@ -99,6 +99,28 @@ class PostsController extends \BaseController {
 			return Redirect::action('PostsController@index');
 	    }
 	}
+	public function storeComment($post_id)
+	{
+		// create the validator
+	    $validator = Validator::make(Input::all(), Comment::$rules);
+
+	    // attempt validation
+	    if ($validator->fails()) {
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        Session::flash('errorMessage', 'Your comment was not successfully created. See errors below:');
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+	        // validation succeeded, create and save the comment
+	        $comment = new Comment();
+            $comment->post_id = $post_id;
+            $comment->user_id = Auth::id();
+            $comment->comment  = Input::get('comment');
+            $comment->save();
+			Session::flash('successMessage', 'Your comment was successfully created.');
+			$post = Post::find($post_id);
+			return View::make('posts.show')->with('post', $post);;
+	    }
+	}
 
 
 	/**
@@ -160,7 +182,7 @@ class PostsController extends \BaseController {
 			$post->img_url = 'http://lorempixel.com/900/300/animals';
 			$post->save();
 			Session::flash('successMessage', 'Your post titled "' . $post->title . '" was successfully updated.');
-			return Redirect::action('PostsController@show', array($id));
+			return Redirect::back();
 		}
 	}
 

@@ -14,6 +14,6 @@ class Comment extends BaseModel
     }
 
     public static $rules = array(
-        'comment'      => 'required|max:32',
+        'comment'      => 'required|max:255',
     );
 }

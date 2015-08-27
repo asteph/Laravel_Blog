@@ -17,6 +17,8 @@ Route::get('resume', 'HomeController@showResume');
 
 Route::get('portfolio', 'HomeController@showPortfolio');
 
+Route::post('posts/{id}/comment', 'PostsController@storeComment');
+
 Route::resource('posts', 'PostsController');
 
 Route::get('login', 'HomeController@showLogin');
