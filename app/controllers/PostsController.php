@@ -62,7 +62,12 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('posts.create');
+		//only allow myself to create new posts
+		if(Auth::id() == 1){
+			return View::make('posts.create');
+		}else{
+			return Redirect::action('PostsController@index');
+		}
 	}
 
 

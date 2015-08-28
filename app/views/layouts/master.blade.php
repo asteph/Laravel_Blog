@@ -58,9 +58,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check()) 
-                        <li>
-                            <a href="posts/create">Create Post</a>
-                        </li>
+                        @if(Auth::id() == 1)
+                            <li>
+                                <a href="posts/create">Create Post</a>
+                            </li>
+                        @endif
                         <li>
                             <a href="{{{ action('HomeController@doLogout') }}}">Logout</a>
                         </li>
