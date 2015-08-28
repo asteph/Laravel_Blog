@@ -121,7 +121,7 @@ class PostsController extends \BaseController {
             $comment->user_id = Auth::id();
             $comment->comment  = Input::get('comment');
             $comment->save();
-			Session::flash('successMessage', 'Your comment was successfully created.');
+			Session::flash('commentSuccessMessage', 'Your comment was successfully created.');
 			$post = Post::find($post_id);
 			return View::make('posts.show')->with('post', $post);
 	    }
