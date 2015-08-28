@@ -103,6 +103,11 @@
                     <small>{{{$comment->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s a')}}}</small>
                 </h4>
                 {{{$comment->comment}}}
+                @if ((Auth::check() && Auth::user()->id == $comment->user->id) || Auth::id() == 1)
+                    {{ Form::open(array('action' => array('PostsController@destroyComment', $comment->id), 'method' => 'DELETE')) }}
+                        <button class="btn btn-danger" >Delete</button>
+                    {{ Form::close() }}
+                @endif
             </div>
         </div>
 

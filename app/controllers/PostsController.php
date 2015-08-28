@@ -123,7 +123,7 @@ class PostsController extends \BaseController {
             $comment->save();
 			Session::flash('successMessage', 'Your comment was successfully created.');
 			$post = Post::find($post_id);
-			return View::make('posts.show')->with('post', $post);;
+			return View::make('posts.show')->with('post', $post);
 	    }
 	}
 
@@ -204,6 +204,19 @@ class PostsController extends \BaseController {
 		$post->delete();
 		Session::flash('successMessage', 'Your post titled "' . $post->title . '" was successfully deleted.');
 		return Redirect::action('PostsController@index');
+	}
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroyComment($commentid)
+	{
+		$comment = Comment::find($commentid);
+		$comment->delete();
+		Session::flash('successMessage', 'Your comment was successfully deleted');
+		return Redirect::back();
 	}
 
 
