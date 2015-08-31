@@ -13,6 +13,8 @@
 
 Route::get('/', 'PostsController@index');
 
+Route::get('simplesimon', 'HomeController@showSimpleSimon');
+
 Route::get('resume', 'HomeController@showResume');
 
 Route::get('portfolio', 'HomeController@showPortfolio');
