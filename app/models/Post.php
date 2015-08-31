@@ -18,11 +18,15 @@ class Post extends BaseModel
         return $this->hasMany('Comment');
     }
     //markdown processing/sanitizing
-    public function renderBody($post)
+    public static function renderBody($post)
     {
         $Parsedown = new Parsedown();
+        $dirty_html = $Parsedown->text($post);
 
-        return $Parsedown->text($post);
+        $purifier = new HTMLPurifier(); 
+        $clean_html = $purifier->purify($dirty_html);
+
+        return $clean_html;
     }
 }
 
