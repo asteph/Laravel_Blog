@@ -63,9 +63,9 @@
     <hr>
 
     <!-- Post Content -->
-    <p class="lead">{{{Str::words($post->body, 40)}}}</p>
+    <p class="lead">{{{Str::words(Post::renderBody($post->body), 40)}}}</p>
     {{-- start normal text after preview shown in index --}}
-    <p>{{{substr($post->body, strlen(Str::words($post->body, 40)) )}}}</p>
+    <p>{{{substr(Post::renderBody($post->body), strlen(Str::words($post->body, 40)) )}}}</p>
     <br>
     {{-- Check to make sure only author of post sees 'edit' and 'delete' buttons --}}
     @if (Auth::check() && Auth::user()->id == $post->user_id) 

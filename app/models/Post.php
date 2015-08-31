@@ -3,6 +3,11 @@
 class Post extends BaseModel
 {
     protected $table = 'posts';
+
+    public static $rules = array(
+        'title'      => 'required|max:32',
+        'body'       => 'required|max:10000|min:350'
+    );
     //relationship
     public function user()
     {
@@ -12,10 +17,12 @@ class Post extends BaseModel
     {
         return $this->hasMany('Comment');
     }
+    //markdown processing/sanitizing
+    public function renderBody($post)
+    {
+        $Parsedown = new Parsedown();
 
-    public static $rules = array(
-        'title'      => 'required|max:32',
-        'body'       => 'required|max:10000|min:350'
-    );
+        return $Parsedown->text($post);
+    }
 }
 
