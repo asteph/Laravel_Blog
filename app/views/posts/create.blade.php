@@ -3,7 +3,7 @@
 @section('content')
 <!-- Blog Entries Column -->
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
 
 	{{-- show errors in alert box --}}
 	@if (Session::has('errorMessage'))
@@ -27,7 +27,7 @@
 	  </div>
 	  <div class="form-group @if($errors->has('body')) has-error @endif">
 	    <label class="control-label" for="body">Blog Post Content</label>
-	    <textarea class="form-control" id="body" name="body" rows="20" >{{{ Input::old('body') }}}</textarea>
+	    <textarea data-provide="markdown" class="form-control" id="body" name="body" rows="20" >{{{ Input::old('body') }}}</textarea>
 	  </div>
 	  {{-- TODO: Doesn't work yet, use from adlister UPDATE: PostsController--}}
 	  <div class="form-group">
@@ -40,4 +40,12 @@
 	{{ Form::close() }}
 {{-- close row --}}
 </div>
+@stop
+@section('script')
+<script type="text/javascript" src="/js/bootstrap-markdown.js"></script>
+<script type="text/javascript" src="/js/markdown.js"></script>
+<script type="text/javascript" src="/js/to-markdown.js"></script>
+<script>
+	$("#body").markdown({autofocus:false, savable:false});
+</script>
 @stop

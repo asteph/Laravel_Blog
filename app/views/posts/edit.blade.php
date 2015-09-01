@@ -26,7 +26,7 @@
 		</div>
 		<div class="form-group @if($errors->has('body')) has-error @endif">
 			<label class="control-label" for="body">Blog Post Content</label>
-			<textarea class="form-control" id="body" name="body" rows="20" >{{{ $post->body }}}</textarea>
+			<textarea data-provide="markdown" class="form-control" id="body" name="body" rows="20" >{{{ $post->body }}}</textarea>
 		</div>
 		{{-- TODO: Doesn't work yet, use from adlister to upload photo as well as catch img url UPDATE: PostsController--}}
 		{{-- <div class="form-group">
