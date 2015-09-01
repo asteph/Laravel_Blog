@@ -41,6 +41,15 @@ class HomeController extends BaseController {
 		return View::make('simplesimon');
 	}
 
+	public function showWhackAMole()
+	{
+		return View::make('whack_a_mouse');
+	}
+	public function showCalculator()
+	{
+		return View::make('calculator');
+	}
+
 	public function showLogin()
 	{
 		return View::make('login');

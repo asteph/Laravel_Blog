@@ -1,0 +1,115 @@
+
+main{
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    width: 800px;
+    margin-top: 0px;
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.5rem;
+}
+h1, h3{
+    text-shadow: 2px 2px #CCC;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+h3{
+    display:inline;
+    margin-left: 10px;
+}
+#container{
+    padding: 10px;
+    border: solid 2px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+	background-image: url('/kitten_plays_whack_a_mouse.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    height: 440px;
+    width: 800px;
+    overflow: hidden;
+
+}
+.box{
+    background-image: url('/mouse.png');
+    background-repeat: no-repeat;
+    background-position: 50% 500%;
+    height: 100px;
+    width: 100px;
+    position:absolute;
+} 
+.target{ 
+    transition: all ease 0.2s;
+    background-position: 50% 100%;
+    z-index: 5;
+}
+.moveBack{
+    z-index: -5;
+}
+#start{
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    bottom: 150px;
+    right: 40px;
+    background-image: none;
+    color: #F6E0B2;
+    font-family: Verdana;
+}
+#box_1{
+    bottom:172px;
+    right:257px;
+    background-size: 100%;
+}
+#box_2{
+    bottom:165px;
+    right:105px;
+    background-size: 100%;
+}
+#box_3{
+    bottom:161px;
+    right:-50px;
+    background-size: 100%;
+}
+#box_4{
+    bottom:135px;
+    right:285px;
+    background-size: 110%;
+}
+#box_5{
+    bottom:128px;
+    right:112px;
+    background-size: 110%;
+}
+#box_6{
+    bottom:121px;
+    right:-50px;
+    background-size: 110%;
+}
+#box_7{
+    bottom:95px;
+    right:315px;
+    background-size: 120%;
+}
+#box_8{
+    bottom:85px;
+    right:125px;
+    background-size: 120%;
+}
+#box_9{
+    bottom:80px;
+    right:-55px;
+    background-size: 120%;
+}
+
+
+
+
+
+
+

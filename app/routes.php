@@ -15,6 +15,10 @@ Route::get('/', 'PostsController@index');
 
 Route::get('simplesimon', 'HomeController@showSimpleSimon');
 
+Route::get('whack-a-mole', 'HomeController@showWhackAMole');
+
+Route::get('calculator', 'HomeController@showCalculator');
+
 Route::get('resume', 'HomeController@showResume');
 
 Route::get('portfolio', 'HomeController@showPortfolio');
