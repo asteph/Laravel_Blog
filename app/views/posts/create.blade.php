@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+<!-- Blog Entries Column -->
+<div class="row">
+<div class="col-md-6">
 
 	{{-- show errors in alert box --}}
 	@if (Session::has('errorMessage'))
@@ -23,7 +26,7 @@
 	    <input type="text" class="form-control" id="title" name="title" value="{{{ Input::old('title') }}}">
 	  </div>
 	  <div class="form-group @if($errors->has('body')) has-error @endif">
-	    <label class="control-label" for="body">Blog Content</label>
+	    <label class="control-label" for="body">Blog Post Content</label>
 	    <textarea class="form-control" id="body" name="body" rows="20" >{{{ Input::old('body') }}}</textarea>
 	  </div>
 	  {{-- TODO: Doesn't work yet, use from adlister UPDATE: PostsController--}}
@@ -35,4 +38,6 @@
 	  <button type="submit" class="btn btn-primary">Submit</button>
 	{{-- </form> --}}
 	{{ Form::close() }}
+{{-- close row --}}
+</div>
 @stop

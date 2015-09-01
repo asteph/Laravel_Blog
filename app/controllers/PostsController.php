@@ -154,7 +154,7 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		$post = Post::find($id);
-		if(Auth::check() && Auth::user()->id == $post->user_id){
+		if((Auth::check() && Auth::user()->id == $post->user_id)|| Auth::id() == 1){
 			return View::make('posts.edit')->with('post', $post);
 		}else{
 			Session::flash('errorMessage', 'Hey buddy, you can not edit or delete a post that is not yours.');
@@ -187,7 +187,7 @@ class PostsController extends \BaseController {
 			$post->img_url = 'http://lorempixel.com/900/300/animals';
 			$post->save();
 			Session::flash('successMessage', 'Your post titled "' . $post->title . '" was successfully updated.');
-			return Redirect::back();
+			return View::make('posts.show')->with('post', $post);
 		}
 	}
 

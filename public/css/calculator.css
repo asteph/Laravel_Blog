@@ -2,7 +2,7 @@ main{
 	margin-left: auto;
     margin-right: auto;
     width: 500px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 .calculatorBody{
 	padding: 40px 25px 10px 25px;
@@ -11,6 +11,7 @@ main{
     border: 3px solid ;
     background-color: #E7E7E8;
     box-shadow: 10px 10px 5px #CCC;
+    margin-left: 10px;
 }
 input{
 	background-color: #C7F4D0;

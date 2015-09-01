@@ -18,6 +18,7 @@
     <!-- Custom CSS -->
     <link href="/css/blog-home.css" rel="stylesheet">
     <link href="/css/blog-post.css" rel="stylesheet">
+    <link href="/css/bootstrap-markdown.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,80 +118,11 @@
     <!-- Page Content -->
     <div class="container">
 
-        <div class="row">
+            @yield('content')
 
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
+    </div>
 
-                @yield('content')
-
-            </div>
-
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    {{ Form::open(array('action' => array('PostsController@index'), 'role' => 'search', 'method' => 'GET')) }}
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                            </span>
-                        </div>
-                    {{ Form::close() }}
-                    <!-- /.input-group -->
-                </div>
-
-
-                <!-- Side Widget Well -->
-                <div class="well text-center">
-                    <img id="profile" src="/img/profile.jpg" class="img-responsive center-block img-circle" alt="profile picture">
-                    <h5>ALISSA STEPHENS</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
-
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    <h4>Blog Categories</h4>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.col-lg-6 -->
-                        <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.col-lg-6 -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-
-            </div>
-
-        </div>
-        <!-- /.row -->
+    {{-- widget wells go here --}}
 
         <hr>
 
@@ -224,6 +156,9 @@
         ga('send', 'pageview');
 
     </script>
+
+    @yield('script')
+
 </body>
 
 </html>

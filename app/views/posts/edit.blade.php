@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+<!-- Blog Entries Column -->
+<div class="row">
+<div class="col-md-12">
 
 	{{-- show errors in alert box --}}
 	@if (Session::has('errorMessage'))
@@ -22,7 +25,7 @@
 			<input type="text" class="form-control" id="title" name="title" value="{{{ $post->title}}}">
 		</div>
 		<div class="form-group @if($errors->has('body')) has-error @endif">
-			<label class="control-label" for="body">Blog Content</label>
+			<label class="control-label" for="body">Blog Post Content</label>
 			<textarea class="form-control" id="body" name="body" rows="20" >{{{ $post->body }}}</textarea>
 		</div>
 		{{-- TODO: Doesn't work yet, use from adlister to upload photo as well as catch img url UPDATE: PostsController--}}
@@ -34,4 +37,15 @@
 		<button type="submit" class="btn btn-primary">Submit</button>
 	{{-- </form> --}}
 	{{ Form::close() }}
+{{-- close column --}}
+</div>
+
+@stop
+@section('script')
+<script type="text/javascript" src="/js/bootstrap-markdown.js"></script>
+<script type="text/javascript" src="/js/markdown.js"></script>
+<script type="text/javascript" src="/js/to-markdown.js"></script>
+<script>
+	$("#body").markdown({autofocus:false, savable:false});
+</script>
 @stop

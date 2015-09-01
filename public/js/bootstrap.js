@@ -280,7 +280,6 @@ if (typeof jQuery === 'undefined') {
       var $btn = $(e.target)
       if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
       Plugin.call($btn, 'toggle')
-      e.preventDefault()
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
@@ -339,7 +338,6 @@ if (typeof jQuery === 'undefined') {
       default: return
     }
 
-    e.preventDefault()
   }
 
   Carousel.prototype.cycle = function (e) {
@@ -510,7 +508,6 @@ if (typeof jQuery === 'undefined') {
       $target.data('bs.carousel').to(slideIndex)
     }
 
-    e.preventDefault()
   }
 
   $(document)
@@ -799,7 +796,6 @@ if (typeof jQuery === 'undefined') {
 
     var $this = $(this)
 
-    e.preventDefault()
     e.stopPropagation()
 
     if ($this.is('.disabled, :disabled')) return
@@ -2143,7 +2139,6 @@ if (typeof jQuery === 'undefined') {
   // ============
 
   var clickHandler = function (e) {
-    e.preventDefault()
     Plugin.call($(this), 'show')
   }
 
