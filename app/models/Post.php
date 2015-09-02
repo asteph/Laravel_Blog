@@ -17,6 +17,10 @@ class Post extends BaseModel
     {
         return $this->hasMany('Comment');
     }
+    public function tags()
+    {
+        return $this->belongsToMany('Tag', 'post_tag')->withTimestamps();
+    }
     //markdown processing/sanitizing
     public static function renderBody($post)
     {
