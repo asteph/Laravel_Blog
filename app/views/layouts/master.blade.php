@@ -15,6 +15,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap with SASS -->
+    <link rel="stylesheet" href="/bower/assets/css/style.css">
     <!-- Custom CSS -->
     <link href="/css/blog-home.css" rel="stylesheet">
     <link href="/css/blog-post.css" rel="stylesheet">

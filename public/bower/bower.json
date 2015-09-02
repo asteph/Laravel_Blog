@@ -1,0 +1,20 @@
+{
+  "name": "Blog SASS",
+  "version": "0.1.0",
+  "homepage": "http://alissastephens.com",
+  "authors": [
+    "asteph <alissa.stephens1@gmail.com>"
+  ],
+  "description": "scss for blog.dev",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5"
+  }
+}
