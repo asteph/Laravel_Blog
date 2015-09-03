@@ -88,8 +88,8 @@ class PostsController extends \BaseController {
 	        //log error to app/storage/logs/laravel.log
 	        Log::info('Unsuccessful attempt to create blog post: ',Input::all());
 	        return Redirect::back()->withInput()->withErrors($validator);
-	    } else {
-	        // validation succeeded, create and save the post
+	    } else {   // validation succeeded, create and save the post
+	    	//check to see if there is a cover image
 	        if (Input::hasFile('img_url'))
 	        {
 	            Input::file('img_url')->move(public_path().'/img',Input::file('img_url')->getClientOriginalName());
@@ -101,8 +101,18 @@ class PostsController extends \BaseController {
 			$post->user_id = Auth::id();
 			$post->save();
 			Session::flash('successMessage', 'Your new post titled "' . $post->title . '" was successfully created.');
-			return Redirect::action('PostsController@index');
+	        //check to see if there are any tags
+	        if(Input::has('tags'))
+	        {
+	        	$tagsArray = explode(",",Input::get('tags'));
+				foreach ($tagsArray as $tagValue){
+					$tag = Tag::firstOrCreate(array('name' => $tagValue));
+					$tagIds[] = $tag->id;
+					$post->tags()->sync($tagIds);
+				}
+	        }
 	    }
+		return Redirect::action('PostsController@index');
 	}
 	public function storeComment($post_id)
 	{
@@ -218,6 +228,5 @@ class PostsController extends \BaseController {
 		Session::flash('successMessage', 'Your comment was successfully deleted');
 		return Redirect::back();
 	}
-
 
 }

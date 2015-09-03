@@ -52,7 +52,6 @@
 {{-- fancy tags --}}
 <script src="/js/jquery.tagsinput.js"></script>
 <script>
-
 	$("#body").markdown({autofocus:false, savable:false});
 
 	$('#tags').tagsInput();
