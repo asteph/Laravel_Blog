@@ -106,8 +106,10 @@ class PostsController extends \BaseController {
 	        {
 	        	$tagsArray = explode(",",Input::get('tags'));
 				foreach ($tagsArray as $tagValue){
+					//firstOrCreate keeps multiple tags with the same name of being made
 					$tag = Tag::firstOrCreate(array('name' => $tagValue));
 					$tagIds[] = $tag->id;
+					//sync also removes tags (only accepts array)
 					$post->tags()->sync($tagIds);
 				}
 	        }

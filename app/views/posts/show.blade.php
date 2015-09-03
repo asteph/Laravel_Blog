@@ -69,12 +69,20 @@
     <p class="lead">{{Str::words($post->body, 40)}}</p>
     {{-- start normal text after preview shown in index --}}
     <p>{{substr(Post::renderBody($post->body), strlen(Str::words($post->body, 40)) )}}</p>
-    <br>
+    <p>
+        <strong>Tags:</strong>
+        @foreach ($post->tags as $tagInfo)
+            {{-- change href to go to url with this tag id --}}
+            <a href="?tag={{{$tagInfo->id}}}">{{$tagInfo->name}}</a>
+        @endforeach
+    </p>
     {{-- Check to make sure only author of post sees 'edit' and 'delete' buttons --}}
     @if ((Auth::check() && Auth::user()->id == $post->user_id) || Auth::id() == 1) 
-        <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-trash"></span></button>
+        <p>
+            <a class="btn btn-primary" href="{{{ action('PostsController@edit', $post->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editModal"><span class="glyphicon glyphicon-trash"></span></button>
+        </p>
     @endif
 
 
@@ -153,6 +161,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <ul class="list-unstyled">
+                        {{-- populate with most popular tags in post_tag table --}}
                         <li><a href="#">Category Name</a>
                         </li>
                         <li><a href="#">Category Name</a>

@@ -25,7 +25,7 @@ div.tagsinput span.tag {
  margin-right: 5px;
  margin-bottom:5px;
  font-family: helvetica;
-  font-size:13px;
+ font-size:13px;
 }
 div.tagsinput span.tag a {
  font-weight: bold;
@@ -58,4 +58,4 @@ div.tagsinput input {
 .not_valid {
   background: #FBD8DB !important;
  color: #90111A !important;
-
+}
