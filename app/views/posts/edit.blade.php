@@ -32,7 +32,6 @@
 			<label for="tags">Tags</label>
 			<input type="text" class="form-control" id="tags" name="tags" value="foo,bar,baz">
 		</div>
-
 		{{-- TODO: Doesn't work yet, use from adlister to upload photo as well as catch img url UPDATE: PostsController--}}
 		{{-- <div class="form-group">
 		<label for="img_url">Image</label>
