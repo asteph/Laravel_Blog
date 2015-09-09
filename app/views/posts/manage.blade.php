@@ -22,6 +22,7 @@
                     <td>
                         <button class="remove-button action btn btn-danger" ng-click="deletePost($index)">Remove</button>
                     </td>
+                    {{-- TODO:Add edit button that brings up modal to edit post and update using a PUT request then close modal, show changes on page in real time as well --}}
                 </tr>
             </tbody>
         </table>
