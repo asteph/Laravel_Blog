@@ -16,8 +16,8 @@
             <tbody>
                 <tr ng-repeat="post in posts">
                     <td>@{{ post.title }}</td>
-                    <td>@{{ post.user.username }}</td>
-                    <td>@{{ post.created_at }}</td>
+                    <td>@{{ post.user.first_name }} @{{ post.user.last_name }}</td>
+                    <td>@{{ post.created_at.date }}</td>
                     <td>
                         <button class="remove-button action btn btn-danger">Remove</button>
                     </td>
