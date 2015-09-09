@@ -28,13 +28,13 @@
 
             $log.debug(response);
         });
-        $scope.deletePost = function (index) {
-            var id = $scope.posts[index].id;
+        $scope.deletePost = function ($index) {
+            var id = $scope.posts[$index].id;
 
             $http.delete('/posts/' + id).then(function (response) {
                 $log.info("Post successfully deleted");
 
-                $scope.posts.splice(index, 1);
+                $scope.posts.splice($index, 1);
             }, function (response) {
                 $log.error("Post failed to delete");
 

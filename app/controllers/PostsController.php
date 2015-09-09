@@ -251,7 +251,7 @@ class PostsController extends \BaseController {
 	public function getList()
 	{
 		//query for all the posts in the database and return tham as a JSON array using Response::json()
-		$posts = Post::with('user')->get();
+		$posts = Post::with('user')->orderBy('created_at', 'desc')->get();
 		return Response::json($posts);
 
 	}
