@@ -25,6 +25,10 @@ Route::get('portfolio', 'HomeController@showPortfolio');
 
 Route::post('posts/{id}/comment', 'PostsController@storeComment');
 
+Route::get('posts/list', 'PostsController@getList');
+
+Route::get('posts/manage', 'PostsController@getManage');
+
 Route::get('posts/{id}/comment', 'PostsController@show');
 
 Route::delete('posts/{id}/destroy', 'PostsController@destroyComment');

@@ -230,5 +230,19 @@ class PostsController extends \BaseController {
 		Session::flash('successMessage', 'Your comment was successfully deleted');
 		return Redirect::back();
 	}
+	//for manage posts page
+	public function getManage()
+	{
+		//return a view of manage.blade.php
+		if(Auth::id() == 1){
+			return View::make('posts.manage');
+		}else{
+			return Redirect::action('PostsController@index');
+		}
+	}
+	public function getList()
+	{
+		//query for all the posts in the database and return tham as a JSON array using Response::json()
+	}
 
 }
