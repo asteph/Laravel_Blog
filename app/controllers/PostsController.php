@@ -214,8 +214,14 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 		$post->delete();
-		Session::flash('successMessage', 'Your post titled "' . $post->title . '" was successfully deleted.');
-		return Redirect::action('PostsController@index');
+
+		// Modify destroy() to send back JSON if it's been requested
+        if (Request::wantsJson()) {
+            return Response::json(array('request' => 'json request sent'));
+        } else {
+			Session::flash('successMessage', 'Post titled "' . $post->title . '" was successfully deleted.');
+            return Redirect::action('PostsController@index');
+        }
 	}
 	/**
 	 * Remove the specified resource from storage.
@@ -230,6 +236,7 @@ class PostsController extends \BaseController {
 		Session::flash('successMessage', 'Your comment was successfully deleted');
 		return Redirect::back();
 	}
+
 	//for manage posts page
 	public function getManage()
 	{
@@ -240,9 +247,13 @@ class PostsController extends \BaseController {
 			return Redirect::action('PostsController@index');
 		}
 	}
+
 	public function getList()
 	{
 		//query for all the posts in the database and return tham as a JSON array using Response::json()
-	}
+		$posts = Post::with('user')->get();
+		return Response::json($posts);
 
+	}
 }
+

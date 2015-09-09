@@ -3,23 +3,22 @@
 @section('content')
 <!-- Blog Entries Column -->
 <div class="row" ng-app="blog">
-    <div class="col-md-12" ng-controller="ManagePostsController">
-        <table class="table table-striped">
+    <div class="col-md-12">
+        <table class="table table-striped" ng-controller="ManagePostsController">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Actions</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Date posted</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="name">Bob</td>
-                    <td class="email">bob@mail.com</td>
-                    <td class="phone">123-123-1234</td>
+                <tr ng-repeat="post in posts">
+                    <td>@{{ post.title }}</td>
+                    <td>@{{ post.user.username }}</td>
+                    <td>@{{ post.created_at }}</td>
                     <td>
-                        <button class="edit-button action btn btn-default" data-toggle="modal" data-target="#editModal">Edit</button>
                         <button class="remove-button action btn btn-danger">Remove</button>
                     </td>
                 </tr>
@@ -31,5 +30,10 @@
     </div>
 </div>
 <!-- /.row -->
+@stop 
+
+@section('script')
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+    <script type="text/javascript" src="/js/blog.js"></script>
 @stop
 

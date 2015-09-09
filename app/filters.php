@@ -81,10 +81,12 @@ Route::filter('guest', function()
 |
 */
 
+// Modify csrf filter to check tokens passed in HTTP headers
 Route::filter('csrf', function()
 {
-	if (Session::token() !== Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+    $token = Request::ajax() ? Request::header('X-Csrf-Token') : Input::get('_token');
+    
+    if (Session::token() !== $token) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });
