@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{{ action('PostsController@index') }}}">Code_Blog</a>
+                <a class="navbar-brand" href="{{{ action('PostsController@index') }}}"><img src="/img/personal_logo3.png" alt="logo" width="40px" height="40px" style="margin-left: -20px; padding-top: 0px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -57,7 +57,10 @@
                     @if (Auth::check()) 
                         @if(Auth::id() == 1)
                             <li>
-                                <a href="posts/create">Create Post</a>
+                                <a href="http://blog.dev/posts/create">Create Post</a>
+                            </li>
+                            <li>
+                                <a href="http://blog.dev/posts/manage">Manage Posts</a>
                             </li>
                         @endif
                         <li>
@@ -120,18 +123,6 @@
 
     {{-- widget wells go here --}}
 
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </footer>
 
     </div>
     <!-- /.container -->

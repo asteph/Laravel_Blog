@@ -37,7 +37,7 @@
     @endif
 {{-- col-md-8 close --}}
 </div>
-        <!-- Blog Sidebar Widgets Column -->
+    <!-- Blog Sidebar Widgets Column -->
     <div class="col-md-4">
 
         <!-- Blog Search Well -->
@@ -49,7 +49,7 @@
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-search"></span>
-                    </button>
+                        </button>
                     </span>
                 </div>
             {{ Form::close() }}

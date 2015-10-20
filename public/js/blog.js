@@ -28,11 +28,29 @@
 
             $log.debug(response);
         });
+        $scope.select = function ($index) {
+            $scope.selectedPost = $index;
+            console.log($scope.selectedPost);
+            console.log($scope.posts[$scope.selectedPost]);
+        }
         $scope.deletePost = function ($index) {
             var id = $scope.posts[$index].id;
 
             $http.delete('/posts/' + id).then(function (response) {
                 $log.info("Post successfully deleted");
+
+                $scope.posts.splice($index, 1);
+            }, function (response) {
+                $log.error("Post failed to delete");
+
+                $log.debug(response);
+            });
+        }
+        $scope.updatePost = function () {
+            var id = $scope.posts[$scope.selectedPost].id;
+
+            $http.put('/posts/' + id).then(function (response) {
+                $log.info("Post successfully updated");
 
                 $scope.posts.splice($index, 1);
             }, function (response) {
