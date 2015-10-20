@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PostsController@index');
+Route::get('/', 'HomeController@showPortfolio');
 
 Route::get('simplesimon', 'HomeController@showSimpleSimon');
 

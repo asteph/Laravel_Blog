@@ -12,7 +12,7 @@
     <!-- Add CSRF Token as a meta tag in your head -->
     <meta name="csrf-token" content="{{{ csrf_token() }}}">
 
-    <title>Blog Home</title>
+    <title>Alissa Stepens</title>
 
     <!-- Bootstrap with SASS -->
     <link rel="stylesheet" href="/bower/assets/css/style.css">
@@ -44,10 +44,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/posts">Blog</a>
+                        <a href="/portfolio">Projects</a>
                     </li>
                     <li>
-                        <a href="/portfolio">Projects</a>
+                        <a href="/posts">Blog</a>
                     </li>
                     <li>
                         <a href="/resume">Resume</a>
