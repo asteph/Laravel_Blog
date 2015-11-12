@@ -12,7 +12,7 @@
     <!-- Add CSRF Token as a meta tag in your head -->
     <meta name="csrf-token" content="{{{ csrf_token() }}}">
 
-    <title>Alissa Stepens</title>
+    <title>Alissa Stephens</title>
 
     <!-- Bootstrap with SASS -->
     <link rel="stylesheet" href="/bower/assets/css/style.css">
